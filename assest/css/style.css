@@ -1,4 +1,6 @@
 
+/* Universal CSS */
+
 * {
     margin: 0;
     padding: 0;
@@ -12,6 +14,11 @@ body {
     color: white;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+
 /* Navbar */
 
 .navbar {
@@ -22,6 +29,8 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 0 9%;
+    position: relative;
+    z-index: 1000;
 }
 
 .logo {
@@ -50,10 +59,43 @@ body {
     color: #d4af37;
 }
 
+
+/* Burger Menu */
+
+.burger-menu {
+    display: none;
+    cursor: pointer;
+}
+
+.burger-menu span {
+    display: block;
+    width: 30px;
+    height: 3px;
+    background: #d4af37;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* Burger Animation */
+
+.burger-menu.change span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+
+.burger-menu.change span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.change span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+
 /* Hero Section */
 
 .hero {
     height: 650px;
+
     background:
     linear-gradient(to right, #000000d9, #00000055),
     url("https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600")
@@ -99,11 +141,14 @@ body {
 }
 
 .btn {
+    display: inline-block;
     background: #d4af37;
     color: black;
     padding: 15px 28px;
     text-decoration: none;
     font-weight: bold;
+    border: none;
+    cursor: pointer;
     transition: 0.3s;
 }
 
@@ -136,27 +181,78 @@ body {
     letter-spacing: 2px;
 }
 
-/* About */
 
-.about, .cars, .services, .contact {
-    padding: 80px 9%;
-    text-align: center;
+/* About Section */
+
+.about {
+    padding: 100px 9%;
 }
 
-.about h2, .cars h2, .services h2, .contact h2 {
-    font-size: 35px;
-    margin-bottom: 25px;
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+.about-image {
+    width: 50%;
+}
+
+.about-image img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.about-text {
+    width: 50%;
+}
+
+.about-text h2 {
+    font-size: 38px;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+.about-text h2 span {
     color: #d4af37;
 }
 
-.about p {
-    max-width: 750px;
-    margin: auto;
-    line-height: 1.8;
+.about-text p {
     color: #ccc;
+    line-height: 1.8;
+    margin-bottom: 20px;
 }
 
-/* Cars */
+
+/* Cars Section */
+
+.cars {
+    padding: 90px 9%;
+    text-align: center;
+    background: #080808;
+}
+
+.cars h2,
+.services h2,
+.choose h2,
+.contact h2 {
+    font-size: 38px;
+    margin-bottom: 20px;
+}
+
+.cars h2 span,
+.services h2 span,
+.choose h2 span,
+.contact h2 span {
+    color: #d4af37;
+}
+
+.section-description {
+    color: #ccc;
+    margin-bottom: 40px;
+}
 
 .car-container {
     display: flex;
@@ -168,9 +264,10 @@ body {
 .car-card {
     width: 300px;
     background: #202020;
-    padding: 15px;
     border-radius: 8px;
+    overflow: hidden;
     transition: 0.3s;
+    text-align: left;
 }
 
 .car-card:hover {
@@ -179,49 +276,243 @@ body {
 
 .car-card img {
     width: 100%;
-    height: 190px;
+    height: 210px;
     object-fit: cover;
-    border-radius: 5px;
 }
 
-.car-card h3 {
-    margin: 18px 0 10px;
+.car-info {
+    padding: 20px;
 }
 
-.car-card p {
-    color: #d4af37;
+.car-info h3 {
+    margin-bottom: 10px;
 }
 
-/* Services and Contact */
-
-.services p, .contact p {
+.car-info p {
     color: #ccc;
-    line-height: 1.8;
+    margin-bottom: 15px;
 }
+
+.car-info a {
+    color: #d4af37;
+    text-decoration: none;
+}
+
+
+/* Services Section */
+
+.services {
+    padding: 90px 9%;
+    text-align: center;
+}
+
+.service-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 45px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    width: 300px;
+    padding: 35px 25px;
+    background: #202020;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background: #292929;
+}
+
+.service-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.service-card p {
+    color: #ccc;
+    line-height: 1.7;
+}
+
+
+/* Why Choose Us */
+
+.choose {
+    padding: 90px 9%;
+    background: #080808;
+    text-align: center;
+}
+
+.choose-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.choose-card {
+    width: 300px;
+    padding: 30px;
+    background: #202020;
+    border-radius: 8px;
+}
+
+.choose-card h3 {
+    font-size: 40px;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.choose-card h4 {
+    margin-bottom: 15px;
+}
+
+.choose-card p {
+    color: #ccc;
+    line-height: 1.7;
+}
+
+
+/* Contact Section */
+
+.contact {
+    padding: 90px 9%;
+    text-align: center;
+}
+
+.contact > p {
+    color: #ccc;
+}
+
+.contact-container {
+    max-width: 600px;
+    margin: 40px auto 0;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contact input,
+.contact textarea {
+    width: 100%;
+    padding: 15px;
+    background: #202020;
+    color: white;
+    border: 1px solid #444;
+    border-radius: 5px;
+    outline: none;
+}
+
+.contact input:focus,
+.contact textarea:focus {
+    border-color: #d4af37;
+}
+
+.contact textarea {
+    resize: vertical;
+}
+
+.contact button {
+    align-self: flex-start;
+}
+
+
+/* Footer */
 
 footer {
     background: #080808;
-    padding: 25px;
+    padding: 45px 9%;
     text-align: center;
-    color: #aaa;
 }
 
-/* Responsive */
+footer .logo {
+    margin-bottom: 15px;
+}
 
-@media(max-width: 768px) {
+footer p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 25px 0;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #d4af37;
+}
+
+.copyright {
+    border-top: 1px solid #333;
+    padding-top: 20px;
+    margin-bottom: 0;
+}
+
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+
+    /* Navbar */
 
     .navbar {
-        height: auto;
-        padding: 20px;
-        flex-direction: column;
-        gap: 20px;
+        height: 75px;
+        padding: 0 25px;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .mb-main {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        width: 100%;
+        background: #080808;
+        z-index: 1000;
+    }
+
+    .mb-main.active {
+        display: block;
     }
 
     .navbar ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 18px;
+        flex-direction: column;
+        gap: 0;
+        text-align: center;
     }
+
+    .navbar ul li {
+        padding: 17px;
+        border-bottom: 1px solid #333;
+    }
+
+    /* Hero */
 
     .hero {
         height: 550px;
@@ -237,4 +528,91 @@ footer {
         right: 30px;
         font-size: 9px;
     }
+
+    /* About */
+
+    .about {
+        padding: 60px 25px;
+    }
+
+    .about-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .about-image,
+    .about-text {
+        width: 100%;
+    }
+
+    .about-image img {
+        height: 250px;
+    }
+
+    .about-text h2 {
+        font-size: 30px;
+    }
+
+    /* Other Sections */
+
+    .cars,
+    .services,
+    .choose,
+    .contact {
+        padding: 65px 20px;
+    }
+
+    .cars h2,
+    .services h2,
+    .choose h2,
+    .contact h2 {
+        font-size: 30px;
+    }
+
+    .car-card,
+    .service-card,
+    .choose-card {
+        width: 100%;
+        max-width: 380px;
+    }
+
+}
+
+
+/* Small Mobile */
+
+@media (max-width: 480px) {
+
+    .logo {
+        font-size: 23px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .small-title {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .buttons {
+        gap: 10px;
+    }
+
+    .btn,
+    .btn-outline {
+        padding: 12px 15px;
+        font-size: 13px;
+    }
+
+    .hero-bottom {
+        font-size: 8px;
+        letter-spacing: 1px;
+    }
+
 }
